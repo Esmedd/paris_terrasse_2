@@ -63,7 +63,7 @@ def cleaner(df:pd.DataFrame):
 
     return clean_df
 
-def get_latlon(address:str=address):
+def get_latlon(address:str):
     url_geopapify = "https://api.geoapify.com/v1/geocode/search?"
 
     headers_geopapify = {
@@ -121,7 +121,7 @@ def return_xy(lat:float,lon:float):
     x, y = shadow_map.Map(hm.lat, hm.lng, hm.resolution,hm.size,hm.proj)._latLngToIndex(lat=lat,lng=lon)
     return x, y
 
-def get_terrasses_df(address:str=address,start:str=now, end:str=now_plus1,interval:int=60, maxdist:float=1.5):
+def get_terrasses_df(address:str,start:str=now, end:str=now_plus1,interval:int=60, maxdist:float=1.5):
 
     print("get_terrasses_df - Starting get_latlon: ")
     usr_lat,usr_lon = get_latlon(address=address)
@@ -176,6 +176,7 @@ def tarrasse(address:str="6 rue charles-francois dupuis",start:str=datetime.now(
     print("Main - Time used: ",start)
 
     print("Main - Starting: get_terrasses_df")
+    address=address
     terrasses = get_terrasses_df(address=address,start=start,end=end)
     print("Main - End: get_terrasses_df")
 

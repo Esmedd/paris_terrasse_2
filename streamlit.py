@@ -9,7 +9,7 @@ if st.button("Trouvez moi une pinte au soleil"):
     address = entry_text
 
     # Show spinner while waiting for API response
-    @st.cache_data
+    #@st.cache_data
     with st.spinner("Sous le soleil 🌞 Bleu marine et blue 🌞 Ebloui pareil"):
         best = tarrasse(address=entry_text)
     if len(best)==0:
